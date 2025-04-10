@@ -2,18 +2,14 @@ const mongoose = require("mongoose");
 
 const companySchema = new mongoose.Schema(
   {
-    companyName: {
+    companyname: {
       type: String,
       required: true,
     },
-    email: {
+    companyemail: {
       type: String,
       required: true,
       unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
     },
     hrname: {
       type: String,
@@ -27,9 +23,23 @@ const companySchema = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "CompanyDrive",
+        required: true,
       },
     ],
+    eligiblebranch: {
+      type: [String],
+      required: true,
+    },
+    minCgpa: {
+      type: String,
+      default:"None",
+    },
+    deadline: {
+      type: Date,
+      required: true,
+    }
   },
+
   { timestamps: true }
 );
 
